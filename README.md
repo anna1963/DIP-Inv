@@ -50,3 +50,6 @@ For more information on running Colab notebooks, see https://colab.google.
 ## Citation
 
 The paper is also available on the ArXiv:
+
+## License
+These notebooks are licensed under the [GPL-3 License](/LICENSE).
