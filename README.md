@@ -8,10 +8,11 @@ The backpropagation algorithm is employed to update the trainable parameters of 
 Note that the CNN in our proposed method does not require training before the inversion, rather, the CNN weights are estimated in the inversion algorithm.
 
 ## Contents
-There are 2 notebooks in the 'notebooks' directory:
+There are 3 notebooks in the 'notebooks' directory:
 - Generate_Synthetic_Voltages.ipynb: runs the forward simulation for the 5 cases shown in the paper. 5% Gaussion noises are added to the synthetic data. 
 - Plot_Results.ipynb: gives an example about how to plot the image in the paper using SimPEG and matplotlib.
 All notesbook can be run on Colab (!pip install is included in the first cell).
+- Conventional_inversion_using_SimPEG.ipynb: runs the SimPEG inversion codes to get the conventional inversion results.
 
 There are 2 python scripts in the 'train' directory:
 - stage_1.py: trains a randomly initialized CNN with the lose |m-m_ref|. This stage is mainly for saving time in the experiments with the same reference model.
