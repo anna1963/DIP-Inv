@@ -5,11 +5,11 @@ channels:
   - defaults
 dependencies:
   - numpy
-  - scipy==1.9.1
+  - scipy=1.9.1
   - matplotlib
   - mkl
   - pip
-  - pytorch==2.0.1
+  - pytorch=2.0.1
   - torchvision
   - pip:
     - geoana==0.4.0
