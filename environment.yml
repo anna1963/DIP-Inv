@@ -10,6 +10,7 @@ dependencies:
   - mkl
   - pip
   - torch==2.0.1
+  - torchvision
   - pip:
     - geoana==0.4.0
     - pymatsolver==0.2.0

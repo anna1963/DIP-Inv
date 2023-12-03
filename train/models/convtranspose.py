@@ -45,9 +45,9 @@ class NNDC(nn.Module):
         y = self.b5(x4)
         return torch.mul(y[:,:,:,1:-1],-8)
 
-class NNDC_dropout(nn.Module):
+class NNDC_dropout_10(nn.Module):
     def __init__(self):
-         super(NNDC, self).__init__()
+         super(NNDC_dropout_10, self).__init__()
          self.b1 = nn.Sequential(nn.Linear(8,174),
                    nn.LeakyReLU(inplace = True, negative_slope=0.2),
                    )
@@ -58,6 +58,30 @@ class NNDC_dropout(nn.Module):
                    nn.Sigmoid(),
                    )
          self.dropout = nn.Dropout(0.1)
+
+    def forward(self, x):
+        x1 = self.b1(x)
+        x1 = x1.view((1,1,6,29))
+        x2 = self.b2(x1)
+        x3 = self.b3(x2)
+        x4 = self.b4(x3)
+        x4 = self.dropout(x4)
+        y = self.b5(x4)
+        return torch.mul(y[:,:,:,1:-1],-8)
+
+class NNDC_dropout_5(nn.Module):
+    def __init__(self):
+         super(NNDC_dropout_5, self).__init__()
+         self.b1 = nn.Sequential(nn.Linear(8,174),
+                   nn.LeakyReLU(inplace = True, negative_slope=0.2),
+                   )
+         self.b2 = upsampling_block(in_channels = 1, out_channels = 64)
+         self.b3 = upsampling_block(in_channels = 64, out_channels = 32)
+         self.b4 = upsampling_block(in_channels = 32, out_channels = 8)
+         self.b5 = nn.Sequential(nn.Conv2d(in_channels=8, out_channels=1, kernel_size=3, stride=1, padding=0),
+                   nn.Sigmoid(),
+                   )
+         self.dropout = nn.Dropout(0.05)
 
     def forward(self, x):
         x1 = self.b1(x)

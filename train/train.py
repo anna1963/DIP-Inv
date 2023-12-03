@@ -68,15 +68,21 @@ def train(attributes):
                       }
     """
     if attributes['structure'] == 'kernel_3':
-        from models.kernel_3_dropout import NNDC_dropout
-        from models.kernel_3 import NNDC
-        if attributes['Dropout'] == True:
-            model = NNDC_dropout()
-        else:
+        if attributes['dropout_rate'] == 0.1:
+            from models.kernel_3 import NNDC_dropout_10
+            model = NNDC_dropout_10()
+        elif attributes['dropout_rate'] == 0.05:
+            from models.kernel_3 import NNDC_dropout_5
+            model = NNDC_dropout_5()
+        elif attributes['dropout_rate'] == 0.0:
+            from models.kernel_3 import NNDC
             model = NNDC()
+        else:
+            return "Error: The dropout_rate is not valid"
+        from models.kernel_3 import NNDC
         model.load_state_dict(torch.load('./start_model/start_weights.pt'))
     elif attributes['structure'] == 'kernel_3_layer_1':
-        if attributes['Dropout'] == True:
+        if attributes['dropout_rate'] != 0.0:
             print("Wrong choice for Dropout")
             Error = "This combination is not included."
             return Error
@@ -85,7 +91,7 @@ def train(attributes):
         model = NNDC()
         model.load_state_dict(torch.load('./start_model/start_weights_kernel_3_layer_1_24924.pt'))
     elif attributes['structure'] == 'kernel_3_layer_5':
-        if attributes['Dropout'] == True:
+        if attributes['dropout_rate'] != 0.0:
             print("Wrong choice for Dropout")
             Error = "This combination is not included."
             return Error
@@ -94,21 +100,32 @@ def train(attributes):
             model = NNDC()
         model.load_state_dict(torch.load('./start_model/start_weights_3_layer_5_25460.pt'))
     elif attributes['structure'] == 'nearest':
-        from models.nearest import NNDC_dropout as NNDC_dropout
-        from models.nearest import NNDC as NNDC
-        if attributes['Dropout'] == True:
-            model = NNDC_dropout()
-        else:
+        if attributes['dropout_rate'] == 0.1:
+            from models.nearest import NNDC_dropout_10
+            model = NNDC_dropout_10()
+        elif attributes['dropout_rate'] == 0.05:
+            from models.nearest import NNDC_dropout_5
+            model = NNDC_dropout_5()
+        elif attributes['dropout_rate'] == 0.0:
+            from models.nearest import NNDC
             model = NNDC()
+        else:
+            return "Error: The dropout_rate is not valid"
+        from models.nearest import NNDC
         model.load_state_dict(torch.load('./start_model/start_weights_nearest.pt'))
     elif attributes['structure'] == 'convtranspose':
-        from models.convtranspose import NNDC_dropout as NNDC_dropout
-        from models.convranspose import NNDC as NNDC
-        if attributes['Dropout'] == True:
-            model = NNDC_dropout()
-        else:
+        if attributes['dropout_rate'] == 0.1:
+            from models.convtranspose import NNDC_dropout_10
+            model = NNDC_dropout_10()
+        elif attributes['dropout_rate'] == 0.05:
+            from models.convtranspose import NNDC_dropout_5
+            model = NNDC_dropout_5()
+        elif attributes['dropout_rate'] == 0.0:
+            from models.convtranspose import NNDC
             model = NNDC()
-        model = NNDC()
+        else:
+            return "Error: The dropout_rate is not valid"
+        from models.convtranspose import NNDC
         model.load_state_dict(torch.load('./start_model/start_weights_convtranspose.pt'))
     # else:
     #     Error = "This combination is not included."
@@ -202,12 +219,12 @@ def train(attributes):
     pickle.dump(m_list,f)
     f.close()
 
-    torch.save(model.state_dict(), './'+attributes['file_name']+'_weights.pt')
-    torch.save(model, './' + attributes['file_name']+'_model.pt')
+    torch.save(model.state_dict(), attributes['file_name']+'_weights.pt')
+    torch.save(model, attributes['file_name']+'_model.pt')
 
     #Return the final result
     model_= NNDC()
-    model_.load_state_dict(torch.load('./'+attributes['file_name']+'_weights.pt'))
+    model_.load_state_dict(torch.load(attributes['file_name']+'_weights.pt'))
     output = model_(input_z)
     m = output.detach().numpy()[0][0].flatten()
     pkl_name = attributes['file_name']+'_final'+'.pkl'
@@ -223,8 +240,7 @@ if __name__ == '__main__':
     np.random.seed(0)
     input_z = torch.normal(0, 10, size=(1, 8))
     attributes = {'structure':'kernel_3',
-                  'Dropout':True,
-                  #dropout rate
+                  'dropout_rate':0.1, #0.05, 0
                   'Case':'PGI_15_Gaussion',
                   'decay_rate':1000,
                   'lr':1e-4,
