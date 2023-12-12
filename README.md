@@ -51,7 +51,9 @@ For more information on running Colab notebooks, see https://colab.google.
 ## Citation
 
 The preprint is available on the ArXiv: http://arxiv.org/abs/2312.04752.
+
 This work has been submitted to the IEEE for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.
+
 '''
 @article{xu2023testtime,
       title={A Test-Time Learning Approach to Reparameterize the Geophysical Inverse Problem with a Convolutional Neural Network}, 
