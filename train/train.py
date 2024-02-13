@@ -192,6 +192,7 @@ def train(attributes):
         output = model(input_z)
         m = output.detach().numpy()[0][0].flatten()
         print(np.max(m), np.min(m))
+	simulation = dc.simulation_2d.Simulation2DNodal(mesh, survey=survey, sigmaMap=conductivity_map, solver=Solver, storeJ=True)
         J = simulation.Jtvec(m, W.T*(W*simulation.residual(m, dc_data.dobs)))
         loss = total_loss(output, J, beta)
         reg = theta_m(output)
