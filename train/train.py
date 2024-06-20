@@ -98,7 +98,7 @@ def train(attributes):
         else:
             from models.kernel_3_layer_5_25460 import NNDC
             model = NNDC()
-        model.load_state_dict(torch.load('./start_model/start_weights_3_layer_5_25460.pt'))
+        model.load_state_dict(torch.load('./start_model/start_weights_kernel_3_layer_5_25460.pt'))
     elif attributes['structure'] == 'nearest':
         if attributes['dropout_rate'] == 0.1:
             from models.nearest import NNDC_dropout_10
