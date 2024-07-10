@@ -54,17 +54,21 @@ For more information on running Colab notebooks, see https://colab.google.
 ## Citation
 
 The preprint is available on the ArXiv: http://arxiv.org/abs/2312.04752.
+The IEEE Early Access is available on: https://ieeexplore.ieee.org/document/10587271.
 
-This work has been submitted to the IEEE for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.
+©2024 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
 
 ```
-@article{xu2023testtime,
-      title={A Test-Time Learning Approach to Reparameterize the Geophysical Inverse Problem with a Convolutional Neural Network}, 
-      author={Anran Xu and Lindsey J. Heagy},
-      year={2023},
-      eprint={2312.04752},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@ARTICLE{10587271,
+  author={Xu, Anran and Heagy, Lindsey J.},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={A Test-Time Learning Approach to Reparameterize the Geophysical Inverse Problem with a Convolutional Neural Network}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Inverse problems;Conductivity;Convolutional neural networks;Training;Neural networks;Mathematical models;Geology;Convolutional neural network (CNN);deep image prior (DIP);deep learning (DL);direct-current resistivity (DCR) inversion;parameterized inversion (PI)},
+  doi={10.1109/TGRS.2024.3424659}}
 }
 ```
 
