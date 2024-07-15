@@ -1,6 +1,6 @@
 # A Test-Time Learning Approach to Reparameterize the Geophysical Inverse Problem with a Convolutional Neural Network (DIP-Inv)
 
-Please check out this work presented in AGU23. You can find poster and video presentation in the Outstanding Student Presentation Awards (OSPA) Winners's gallery: https://agu23.ipostersessions.com/Default.aspx?s=ospa-2024-winners-gallery by searching "LEVERAGING CONVOLUTIONAL NEURAL NETWORKS FOR IMPLICIT REGULARIZATION IN DC RESISTIVITY INVERSIONS"
+This work was presented in AGU23 and been awarded the Outstanding Student Presentation Awards (OSPA). You can find poster and video presentation in the OSPA Winners's gallery: https://agu23.ipostersessions.com/Default.aspx?s=ospa-2024-winners-gallery, by searching "LEVERAGING CONVOLUTIONAL NEURAL NETWORKS FOR IMPLICIT REGULARIZATION IN DC RESISTIVITY INVERSIONS"
 
 ## Summary
 We proposed a method that doesn’t require a training dataset of the subsurface models. This test-time learning method, where the CNN weights are adjusted for each test data, produces better inversion results in multiple synthetic cases. 
