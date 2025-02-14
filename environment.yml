@@ -6,7 +6,7 @@ channels:
 dependencies:
   - numpy
   - scipy=1.9.1
-  - matplotlib
+  - matplotlib=3.8.0
   - mkl
   - pip
   - pytorch=2.0.1
